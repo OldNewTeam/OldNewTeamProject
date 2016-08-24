@@ -18,5 +18,7 @@ namespace OldNewTeamProject.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<OldNewTeamProject.Models.Evaluation> Evaluations { get; set; }
     }
 }
