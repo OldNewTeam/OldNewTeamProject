@@ -28,7 +28,7 @@
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.DropDownListFor(model => model.Value,
-                         new SelectList(new List<String> { "rocks", "sucks" }))
+                         new SelectList(new List<String> { "rocks", "sucks" }), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
             </div>
         </div>
