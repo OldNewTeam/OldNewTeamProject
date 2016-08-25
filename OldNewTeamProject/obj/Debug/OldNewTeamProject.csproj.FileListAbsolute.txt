@@ -66,3 +66,4 @@ D:\Projects\OldNewTeamProject\OldNewTeamProject\bin\Microsoft.Owin.Security.Twit
 D:\Projects\OldNewTeamProject\OldNewTeamProject\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Projects\OldNewTeamProject\OldNewTeamProject\obj\Debug\OldNewTeamProject.dll
 D:\Projects\OldNewTeamProject\OldNewTeamProject\obj\Debug\OldNewTeamProject.pdb
+D:\Projects\OldNewTeamProject\OldNewTeamProject\obj\Debug\OldNewTeamProject.csprojResolveAssemblyReference.cache
