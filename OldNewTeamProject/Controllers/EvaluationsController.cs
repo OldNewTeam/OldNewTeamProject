@@ -36,16 +36,17 @@ namespace OldNewTeamProject.Controllers
         }
 
         // GET: Evaluations/Create
-        [Authorize]
         public ActionResult Create()
         {
+            List<Language> languages = db.Languages.ToList();
+            ViewBag.DropDownValues = new SelectList(languages.Select(n => n.Name).ToList());
+
             return View();
         }
 
         // POST: Evaluations/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Content,Value,Language,AuthorId,LanguageId")] Evaluation evaluation)
@@ -54,6 +55,10 @@ namespace OldNewTeamProject.Controllers
             {
                 evaluation.Author = db.Users.FirstOrDefault(a => a.UserName == User.Identity.Name);
                 db.Evaluations.Add(evaluation);
+                List<Language> languages = db.Languages.ToList();
+                evaluation.AvailableLanguages = languages;
+                evaluation.LanguageId = db.Languages.FirstOrDefault(l => l.Name == evaluation.Language).Id;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

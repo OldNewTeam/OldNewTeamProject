@@ -27,6 +27,7 @@ namespace OldNewTeamProject.Models
 
         public DateTime Date { get; set; }
         public ApplicationUser Author { get; set; }
+        public List<Language> AvailableLanguages { get; set; }
 
         [Required]
         public int LanguageId { get; set; }
