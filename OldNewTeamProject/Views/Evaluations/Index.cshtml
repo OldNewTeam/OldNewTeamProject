@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.Language)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AuthorId)
+            @Html.DisplayNameFor(model => model.Author)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LanguageId)
@@ -41,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.Language)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AuthorId)
+            @Html.DisplayFor(modelItem => item.Author.UserName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LanguageId)

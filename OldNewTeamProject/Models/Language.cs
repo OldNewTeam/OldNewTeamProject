@@ -8,6 +8,11 @@ namespace OldNewTeamProject.Models
 {
     public class Language
     {
+        public Language()
+        {
+            this.Date = DateTime.Now;
+        }
+
         [Key]
         public int Id { get; set; }
 

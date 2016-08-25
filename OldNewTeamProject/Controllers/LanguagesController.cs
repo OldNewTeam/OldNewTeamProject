@@ -17,7 +17,7 @@ namespace OldNewTeamProject.Controllers
         // GET: Languages
         public ActionResult Index()
         {
-            return View(db.Languages.ToList());
+            return View(db.Languages.Include(l => l.Uploader).ToList());
         }
 
         // GET: Languages/Details/5
@@ -50,6 +50,7 @@ namespace OldNewTeamProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                language.Uploader = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
                 db.Languages.Add(language);
                 db.SaveChanges();
                 return RedirectToAction("Index");

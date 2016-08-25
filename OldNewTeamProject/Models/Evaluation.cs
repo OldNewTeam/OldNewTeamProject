@@ -8,6 +8,11 @@ namespace OldNewTeamProject.Models
 {
     public class Evaluation
     {
+        public Evaluation()
+        {
+            this.Date = DateTime.Now;
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -20,8 +25,8 @@ namespace OldNewTeamProject.Models
         [Required]
         public string Language { get; set; }
 
-        
-        public string AuthorId { get; set; }
+        public DateTime Date { get; set; }
+        public ApplicationUser Author { get; set; }
 
         [Required]
         public int LanguageId { get; set; }

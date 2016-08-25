@@ -17,7 +17,7 @@ namespace OldNewTeamProject.Controllers
         // GET: Evaluations
         public ActionResult Index()
         {
-            return View(db.Evaluations.ToList());
+            return View(db.Evaluations.Include(e => e.Author).ToList());
         }
 
         // GET: Evaluations/Details/5
@@ -50,6 +50,7 @@ namespace OldNewTeamProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                evaluation.Author = db.Users.FirstOrDefault(a => a.UserName == User.Identity.Name);
                 db.Evaluations.Add(evaluation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
