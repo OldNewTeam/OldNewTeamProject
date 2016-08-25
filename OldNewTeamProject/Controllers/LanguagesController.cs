@@ -15,12 +15,14 @@ namespace OldNewTeamProject.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Languages
+        [Authorize(Roles ="Administrator")]
         public ActionResult Index()
         {
             return View(db.Languages.Include(l => l.Uploader).ToList());
         }
 
         // GET: Languages/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace OldNewTeamProject.Controllers
         }
 
         // GET: Languages/Create
+        [Authorize(Roles ="Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -44,6 +47,7 @@ namespace OldNewTeamProject.Controllers
         // POST: Languages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,Date,ratio,positives,negatives")] Language language)
@@ -60,6 +64,7 @@ namespace OldNewTeamProject.Controllers
         }
 
         // GET: Languages/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +82,7 @@ namespace OldNewTeamProject.Controllers
         // POST: Languages/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Description,Date,ratio,positives,negatives")] Language language)
@@ -91,6 +97,7 @@ namespace OldNewTeamProject.Controllers
         }
 
         // GET: Languages/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +113,7 @@ namespace OldNewTeamProject.Controllers
         }
 
         // POST: Languages/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

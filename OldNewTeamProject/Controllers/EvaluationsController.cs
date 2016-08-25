@@ -62,6 +62,7 @@ namespace OldNewTeamProject.Controllers
         }
 
         // GET: Evaluations/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +80,7 @@ namespace OldNewTeamProject.Controllers
         // POST: Evaluations/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Content,Value,Language,AuthorId,LanguageId")] Evaluation evaluation)
@@ -93,6 +95,7 @@ namespace OldNewTeamProject.Controllers
         }
 
         // GET: Evaluations/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +111,7 @@ namespace OldNewTeamProject.Controllers
         }
 
         // POST: Evaluations/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
