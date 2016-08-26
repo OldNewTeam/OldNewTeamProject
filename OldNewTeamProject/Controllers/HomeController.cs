@@ -19,6 +19,8 @@ namespace OldNewTeamProject.Controllers
             foreach (var language in languages)
             {
                 List<Evaluation> posts = new List<Evaluation>();
+
+
                 foreach (var post in evaluations)
                 {
                     if (post.LanguageId == language.Id)
