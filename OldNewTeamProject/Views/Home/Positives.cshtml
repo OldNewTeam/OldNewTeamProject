@@ -9,13 +9,6 @@
 </div>
 
 <div class="actionLinks">
-    <ul>
-        @for (int i = 1; i <= Model.Count; i++)
-        {
-            <li>@Html.ActionLink(Model[i - 1].Name, "Details/" + i.ToString(), "Languages")</li>
-        }
-
-    </ul>
     <div class="btn-link">@Html.ActionLink("Home", "Index", "Home")</div>
     <div class="btn-link">@Html.ActionLink("Ratios", "Ratios", "Home")</div>
     <div class="btn-link">@Html.ActionLink("Negative Reviews", "Negatives", "Home")</div>
@@ -27,16 +20,16 @@
 
 @model List<OldNewTeamProject.Models.Language>
 
-@foreach (var lang in Model)
+@for (int i = 1; i <= Model.Count; i++)
 {
     <div class="row">
         <div class="language">
-            <h2>@lang.Name</h2>
+            <h2>@i. @Html.ActionLink(Model[i-1].Name, "Details/"+i, "Languages")</h2>
             
             <div class="ratio">
-                @if (@lang.positives > 0)
+                @if (Model[i - 1].positives > 0)
                 {
-                    <p>Positive reviews @lang.positives</p>
+                    <p>Positive reviews @Model[i-1].positives</p>
                 }
                 else
                 {
@@ -44,7 +37,7 @@
                 }
             </div>
             <ul class="posts">
-                @foreach (var post in @lang.Posts)
+                @foreach (var post in Model[i-1].Posts)
                 {
                     if (post.Value == "rocks")
                     {

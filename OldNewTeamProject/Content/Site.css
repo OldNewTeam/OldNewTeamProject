@@ -26,3 +26,9 @@ textarea {
 .Model lang{
     display:inline-block;
 }
+
+.btn-link{
+    display:inline-block;
+    padding:10px; 
+    color:red;
+}

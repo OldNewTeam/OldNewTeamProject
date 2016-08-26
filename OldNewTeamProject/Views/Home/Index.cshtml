@@ -9,14 +9,6 @@
    </div>
 
 <div class="actionLinks">
-    <ul>
-        @for (int i = 1; i <= Model.Count; i++)
-        {
-            <li>@Html.ActionLink(Model[i - 1].Name, "Details/" + i.ToString(), "Languages")</li>
-        }
-
-         
-    </ul>
     <div class="btn-link">@Html.ActionLink("Ratios", "Ratios", "")</div>
     <div class="btn-link">@Html.ActionLink("Positive Reviews", "Positives", "")</div>
     <div class="btn-link">@Html.ActionLink("Negative Reviews", "Negatives", "")</div>
@@ -28,10 +20,10 @@
 
 @model List<OldNewTeamProject.Models.Language>
 
-@foreach (var lang in Model)
+@for (int i = 1; i <= Model.Count; i++)
 {
     <div>
-        <h4>@lang.Name</h4>
-        <textarea rows="10">@lang.Description</textarea>
+        <h4>@Html.ActionLink(@Model[i - 1].Name, "Details/" + i, "Languages")</h4>
+        <div>@Model[i-1].Description</div>
     </div>
-}
+} 
