@@ -248,6 +248,8 @@
     <Content Include="Views\Languages\Edit.cshtml" />
     <Content Include="Views\Languages\Index.cshtml" />
     <Content Include="Views\Home\Ratios.cshtml" />
+    <Content Include="Views\Home\Positives.cshtml" />
+    <Content Include="Views\Home\Negatives.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

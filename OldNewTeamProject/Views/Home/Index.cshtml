@@ -15,8 +15,11 @@
             <li>@Html.ActionLink(Model[i - 1].Name, "Details/" + i.ToString(), "Languages")</li>
         }
 
-        @Html.ActionLink("Ratios", "Ratios", "")
+         
     </ul>
+    <div class="btn-link">@Html.ActionLink("Ratios", "Ratios", "")</div>
+    <div class="btn-link">@Html.ActionLink("Positive Reviews", "Positives", "")</div>
+    <div class="btn-link">@Html.ActionLink("Negative Reviews", "Negatives", "")</div>
 </div>
 
 @{

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Ratios";
+    ViewBag.Title = "Positives";
 }
 
 <div class="jumbotron">
@@ -14,10 +14,10 @@
         {
             <li>@Html.ActionLink(Model[i - 1].Name, "Details/" + i.ToString(), "Languages")</li>
         }
-        
+
     </ul>
     <div class="btn-link">@Html.ActionLink("Home", "Index", "Home")</div>
-    <div class="btn-link">@Html.ActionLink("Positive Reviews", "Positives", "Home")</div>
+    <div class="btn-link">@Html.ActionLink("Ratios", "Ratios", "Home")</div>
     <div class="btn-link">@Html.ActionLink("Negative Reviews", "Negatives", "Home")</div>
 </div>
 
@@ -32,21 +32,25 @@
     <div class="row">
         <div class="language">
             <h2>@lang.Name</h2>
-           
+            
             <div class="ratio">
                 @if (@lang.positives > 0)
                 {
-                    <p>Positive ratio @string.Format("{0:#.##}", lang.ratio) %</p>
+                    <p>Positive reviews @lang.positives</p>
                 }
                 else
                 {
-                    <p>Positive ratio 0%</p>
+                    <p>Positive reviews 0</p>
                 }
             </div>
             <ul class="posts">
                 @foreach (var post in @lang.Posts)
                 {
-                    <li>@post.Content ---> @post.Value</li>
+                    if (post.Value == "rocks")
+                    {
+                        <li>@post.Content ---> @post.Value</li>
+                    }
+                    
                 }
             </ul>
 
