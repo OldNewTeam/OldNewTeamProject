@@ -27,7 +27,10 @@ namespace OldNewTeamProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evaluation evaluation = db.Evaluations.Find(id);
+
+            Evaluation evaluation = db.Evaluations.Include(a => a.Author).FirstOrDefault(a => a.Id == id);
+            
+            
             if (evaluation == null)
             {
                 return HttpNotFound();
