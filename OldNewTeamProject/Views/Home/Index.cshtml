@@ -4,8 +4,20 @@
 
 <div class="jumbotron">
     <h1>Techs comparator</h1>
+    <div description>edi-kvo si</div>
     <p class="lead"></p>
    </div>
+
+<div class="actionLinks">
+    <ul>
+        @for (int i = 1; i <= Model.Count; i++)
+        {
+            <li>@Html.ActionLink(Model[i - 1].Name, "Details/" + i.ToString(), "Languages")</li>
+        }
+
+        @Html.ActionLink("Ratios", "Ratios", "")
+    </ul>
+</div>
 
 @{
     ViewBag.Title = "Home Page";
@@ -15,30 +27,8 @@
 
 @foreach (var lang in Model)
 {
-    <div class="row">
-        <div class="language">
-            <h2>@lang.Name</h2>
-            <div class="details">
-                <div>@lang.Description</div>
-                <div>added on @lang.Date</div>
-            </div>
-            <div class="ratio">
-                @if (@lang.positives > 0)
-                {
-                    <p>Positive ratio @string.Format("{0:#.##}", lang.ratio) %</p>
-                }
-                else
-                {
-                    <p>Positive ratio 0%</p>
-                }
-            </div>
-            <ul class="posts">
-                @foreach (var post in @lang.Posts)
-                {
-                    <li>@post.Content ---> @post.Value</li>
-                }
-            </ul>
-
-        </div>
+    <div>
+        <h4>@lang.Name</h4>
+        <textarea rows="10">@lang.Description</textarea>
     </div>
 }

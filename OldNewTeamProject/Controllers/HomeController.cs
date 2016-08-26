@@ -29,8 +29,53 @@ namespace OldNewTeamProject.Controllers
                     }
                 }
                 language.Posts = posts;
-                int positiveEvaluations = 0; //language.Posts.Select(p => p).Where(p => p.PositiveOrNegative == "rocks").Count();
-                int negativeEvaluations = 0; // language.Posts.Select(p => p).Where(p => p.PositiveOrNegative == "sucks").Count();
+                int positiveEvaluations = 0;
+                int negativeEvaluations = 0;
+                foreach (var post in language.Posts)
+                {
+                    if (post.Value == "rocks")
+                    {
+                        positiveEvaluations++;
+                    }
+                    else
+                    {
+                        negativeEvaluations++;
+                    }
+                }
+                language.positives = positiveEvaluations;
+                language.negatives = negativeEvaluations;
+                if (language.Posts.Count > 0)
+                {
+                    language.ratio = (double)positiveEvaluations / language.Posts.Count * 100;
+                }
+            }
+
+            languages = languages.OrderByDescending(l => l.ratio).ToList();
+            
+
+            return View(languages.ToList());
+        }
+        // GET: Ratios      
+        public ActionResult Ratios()
+        {
+            var languages = db.Languages.ToList();
+            var evaluations = db.Evaluations.ToList();
+
+            foreach (var language in languages)
+            {
+                List<Evaluation> posts = new List<Evaluation>();
+
+
+                foreach (var post in evaluations)
+                {
+                    if (post.LanguageId == language.Id)
+                    {
+                        posts.Add(post);
+                    }
+                }
+                language.Posts = posts;
+                int positiveEvaluations = 0;
+                int negativeEvaluations = 0;
                 foreach (var post in language.Posts)
                 {
                     if (post.Value == "rocks")
@@ -52,9 +97,9 @@ namespace OldNewTeamProject.Controllers
 
             languages = languages.OrderByDescending(l => l.ratio).ToList();
 
+
             return View(languages.ToList());
         }
-
 
     }
 }
