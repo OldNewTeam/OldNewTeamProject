@@ -15,6 +15,7 @@ namespace OldNewTeamProject.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Evaluations
+        [Authorize(Roles ="Administrator")]
         public ActionResult Index()
         {
             return View(db.Evaluations.Include(e => e.Author).ToList());
