@@ -29,11 +29,11 @@
             <div class="ratio">
                 @if (Model[i-1].positives > 0)
                 {
-                    <p>Positive ratio @string.Format("{0:#.##}", Model[i-1].ratio) %</p>
+                    <p>Positive ratio: @string.Format("{0:#.##}", Model[i-1].ratio)%</p>
                 }
                 else
                 {
-                    <p>Positive ratio 0%</p>
+                    <p>Positive ratio: 0%</p>
                 }
             </div>
             <ul class="posts">
