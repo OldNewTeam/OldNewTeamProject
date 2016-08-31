@@ -24,7 +24,7 @@
     @for (int i = 1; i <= Model.Count; i++)
     {
         <div class="techs">
-            <h4>@Html.ActionLink(@Model[i - 1].Name, "Details/" + Model[i-1].Id, "Languages")</h4>
+            <h2>@Html.ActionLink(@Model[i - 1].Name, "Details/" + Model[i-1].Id, "Languages")</h2>
             <div>@Model[i - 1].Description</div>
         </div>
     }
