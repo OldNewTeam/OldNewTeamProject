@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #EEE;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -23,12 +24,31 @@ textarea {
     max-width: 280px;
 }
 
-.Model lang{
-    display:inline-block;
+.actionLinks{
+    text-align: center;    
 }
 
 .btn-link{
     display:inline-block;
-    padding:10px; 
-    color:red;
+    padding:10px;
+    align-content: stretch;
+    
 }
+
+.description{
+    padding-top: 50px;
+    
+}
+
+h1{
+    text-align:center;
+}
+
+.technologies{
+    padding-top:50px;
+}
+
+.jumbotron{
+    margin:0px;
+}
+

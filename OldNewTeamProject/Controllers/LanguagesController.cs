@@ -22,7 +22,6 @@ namespace OldNewTeamProject.Controllers
         }
 
         // GET: Languages/Details/5
-        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)

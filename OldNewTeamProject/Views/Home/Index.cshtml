@@ -4,7 +4,7 @@
 
 <div class="jumbotron">
     <h1>Techs comparator</h1>
-    <div description>The purpose of the app is to collect data about the available technologies at Softuni and compare it in order to help students to make better informed choice between them.</div>
+    <div class="description">The purpose of the app is to collect data about the available technologies at Softuni and compare it in order to help students to make better informed choice between them.</div>
     <p class="lead"></p>
    </div>
 
@@ -19,11 +19,13 @@
 }
 
 @model List<OldNewTeamProject.Models.Language>
-
-@for (int i = 1; i <= Model.Count; i++)
-{
-    <div>
-        <h4>@Html.ActionLink(@Model[i - 1].Name, "Details/" + i, "Languages")</h4>
-        <div>@Model[i-1].Description</div>
-    </div>
-} 
+<div class="technologies">
+    <h3 style="text-align:center">List of Technologies</h3>
+    @for (int i = 1; i <= Model.Count; i++)
+    {
+        <div class="techs">
+            <h4>@Html.ActionLink(@Model[i - 1].Name, "Details/" + Model[i-1].Id, "Languages")</h4>
+            <div>@Model[i - 1].Description</div>
+        </div>
+    }
+</div>
