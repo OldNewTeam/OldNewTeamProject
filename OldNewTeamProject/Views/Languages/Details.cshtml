@@ -66,6 +66,19 @@
             @Html.DisplayFor(model => model.negatives)
         </dd>
 
+        <dt>
+            Evaluations
+        </dt>
+
+        <dd>
+            <ul class="details-language">
+                @foreach (var post in Model.Posts)
+                {
+                    <li>@post.Value ---> @post.Content</li>
+                }
+            </ul>
+        </dd>
+
     </dl>
 </div>
 <p>

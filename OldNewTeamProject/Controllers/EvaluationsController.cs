@@ -64,7 +64,7 @@ namespace OldNewTeamProject.Controllers
                 evaluation.LanguageId = db.Languages.FirstOrDefault(l => l.Name == evaluation.Language).Id;
 
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(evaluation);

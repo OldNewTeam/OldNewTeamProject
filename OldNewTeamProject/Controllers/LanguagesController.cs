@@ -44,8 +44,8 @@ namespace OldNewTeamProject.Controllers
                 }
             }
             language.Posts = posts;
-            int positiveEvaluations = 0; //language.Posts.Select(p => p).Where(p => p.PositiveOrNegative == "rocks").Count();
-            int negativeEvaluations = 0; // language.Posts.Select(p => p).Where(p => p.PositiveOrNegative == "sucks").Count();
+            int positiveEvaluations = 0;
+            int negativeEvaluations = 0;
             foreach (var post in language.Posts)
             {
                 if (post.Value == "rocks")
@@ -63,10 +63,7 @@ namespace OldNewTeamProject.Controllers
             {
                 language.ratio = (double)positiveEvaluations / language.Posts.Count * 100;
             }
-
-
-
-
+            language.Posts = language.Posts.OrderByDescending(date => date.Date).ToList();
 
             if (language == null)
             {
@@ -110,6 +107,8 @@ namespace OldNewTeamProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Language language = db.Languages.Find(id);
+            var evaluations = db.Evaluations.OrderBy(p => p.Date).ToList();
+            
             if (language == null)
             {
                 return HttpNotFound();
@@ -157,6 +156,17 @@ namespace OldNewTeamProject.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Language language = db.Languages.Find(id);
+            var evaluations = db.Evaluations;
+
+            foreach (var evaluation in evaluations)
+            {
+                if (evaluation.LanguageId == language.Id)
+                {
+                    db.Evaluations.Remove(evaluation);
+                }
+            }
+
+
             db.Languages.Remove(language);
             db.SaveChanges();
             return RedirectToAction("Index");
